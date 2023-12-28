@@ -3,7 +3,7 @@
 
 </script>
 <svelte:head>
-  <script src="/aws-sdk-s3.min.js"></script>
+  <script src=""></script>
 </svelte:head>
 
 <h1 class="text-center text-xl font-bold">Home Page</h1>
