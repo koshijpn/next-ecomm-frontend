@@ -69,42 +69,56 @@ export async function isLoggedIn() {
 }
 
 export async function authenticateUser(email, password) {
-  const resp = await fetch(
-    PUBLIC_BACKEND_BASE_URL + '/auth',
-    {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        identity: email,
-        password
-      })
+  try {
+    const resp = await fetch(
+      PUBLIC_BACKEND_BASE_URL + '/sign-in',
+      {
+        method: 'POST',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          email,
+          password,
+        }),
+      }
+    );
+
+    const res = await resp.json();
+
+    if (resp.status === 200 && res.user && res.user.id) {
+      localStorage.setItem(
+        'auth',
+        JSON.stringify({
+          token: res.accessToken,
+          userId: res.user.id,
+          // Add other user information if needed
+        })
+      );
+
+      isLoggedInStore.set(true);
+        console.log("success")
+      return {
+        success: true,
+        res,
+      };
+    } else {
+      console.error('Error during authentication:', res);
+      return {
+        success: false,
+        res,
+      };
     }
-  );
-
-  const res = await resp.json();
-
-  if (resp.status == 200) {
-    localStorage.setItem("auth", JSON.stringify({
-      "token": res.token,
-      "userId": res.record.id
-    }));
-
-    isLoggedInStore.set(true);
-
+  } catch (error) {
+    console.error('Error during authentication:', error);
     return {
-      success: true,
-      res: res
-    }
-  }
-
-  return {
-    success: false,
-    res: res
+      success: false,
+      res: error,
+    };
   }
 }
+
 
 
 // __________________________________________________________________
