@@ -1,7 +1,7 @@
 <script>
   
     import { goto } from '$app/navigation';
-    import { authenticateUser } from '../../utils/auth';
+    import { authenticateUser } from '../../../utils/auth';
     let formErrors = {};
   
     async function signIn(evt){

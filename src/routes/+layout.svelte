@@ -71,7 +71,7 @@ background-color:#000;
                 margin-top: auto;
                 margin-bottom: auto;
                 color:#fff" 
-        href="/users/edit">Edit User</a>
+        href="/user/edit">Edit User</a>
 
         <button class="hover-line font-thin " 
           style = "margin-right:10px;
@@ -100,7 +100,7 @@ background-color:#000;
       margin-top: auto;
       margin-bottom: auto;
       color:#fff" 
-      href="/login">login</a>
+      href="user/login">login</a>
       {/if}
 
   </nav>
