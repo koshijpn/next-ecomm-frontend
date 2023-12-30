@@ -161,3 +161,26 @@ export async function getUserInfo() {
     return null;
   }
 }
+
+export async function showuser() {
+  let userid = getUserId();
+  let user = {};
+  let url = PUBLIC_BACKEND_BASE_URL + '/users/' + userid;
+
+  const resp = await fetch(url, {
+    method: 'GET',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': getTokenFromLocalStorage()
+    },
+  });
+
+  const res = await resp.json();
+  if (resp.status === 200) {
+    user = res; // レスポンスをuserに設定
+  }
+
+  return user;
+}
+

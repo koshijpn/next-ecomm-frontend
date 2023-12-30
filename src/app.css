@@ -1,3 +1,41 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+ /* リンクのスタイル */
+ .hover-line {
+    text-decoration: none;
+    position: relative;
+    font-size: 24px;
+    color: #fff;
+    margin-left: 10px;
+    margin-right: 10px;
+    top: 0;
+    bottom: 0;
+    margin-top: auto;
+    margin-bottom: auto;
+    overflow: hidden;
+    text-decoration-line: none;
+  }
+
+  /* 擬似要素のスタイル */
+  .hover-line::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #fff;
+    transition: width 0.3s ease;
+  }
+
+  /* hover時のアニメーション */
+  .hover-line:hover::before {
+    width: 100%;
+  }
+
+  main ,.p40{
+    padding:40px;
+  }
