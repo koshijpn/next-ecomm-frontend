@@ -4,6 +4,14 @@ import { goto } from '$app/navigation';
 
 export const isLoggedInStore = writable(false);
 
+export function checkLoginStatus() {
+  if (isLoggedInStore === false) {
+    console.log("logout");
+  } else if (isLoggedInStore === true) {
+    console.log("login");
+  }
+}
+
 const emptyAuth = {
   "token": "",
   "userId": ""
@@ -13,6 +21,7 @@ export function logOut() {
   localStorage.setItem("auth", JSON.stringify(emptyAuth));
   isLoggedInStore.set(false);
   goto("/"); 
+  console.log("success");
   return true
 }
 
@@ -119,45 +128,36 @@ export async function authenticateUser(email, password) {
   }
 }
 
+export async function getUserInfo() {
+  const token = getTokenFromLocalStorage();
 
+  if (!token) {
+    return null; // ユーザーがサインインしていない場合は null を返す
+  }
 
-// __________________________________________________________________
-// import { PUBLIC_BACKEND_BASE_URL } from '$env/static/public';
-// import { onMount } from "svelte";
+  try {
+    const resp = await fetch(
+      PUBLIC_BACKEND_BASE_URL + '/user',
+      {
+        method: 'GET',
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': token,
+        },
+      }
+    );
 
-// async function getUser(){
-//     const resp = await fetch(
+    const res = await resp.json();
 
-//         PUBLIC_BACKEND_BASE_URL + '/user',
-//         {
-//             method: 'GET',
-//             mode: 'cors',
-//             headers: {
-//             'Content-Type': 'application/json',
-//             }
-//         }
-//     )
-      
-
-//     const res = await resp.json();
-
-//     if (resp.status == 200) {
-        
-//         return {
-//           user: res.items
-//         }
-//       } else {
-//         return {
-//           user: []
-//         }
-//     }
-// }
-
-// let data = {
-//     user: []
-// }
-      
-// onMount(async () => {
-//     data = await getUser()
-// })
-
+    if (resp.status === 200) {
+      return res; // ユーザー情報を含むレスポンスを返す
+    } else {
+      console.error('Error getting user info:', res);
+      return null;
+    }
+  } catch (error) {
+    console.error('Error getting user info:', error);
+    return null;
+  }
+}
