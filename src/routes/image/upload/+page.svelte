@@ -2,13 +2,31 @@
 <script>
   import { PUBLIC_BACKEND_BASE_URL } from '$env/static/public';
   import { uploadMedia } from '../../../utils/s3-uploader.js';
-  import { isLoggedInStore, getTokenFromLocalStorage, getUserId, getUserInfo } from '../../../utils/auth.js';
+  import { isLoggedInStore, getTokenFromLocalStorage, getUserId, getUserInfo, showuser } from '../../../utils/auth.js';
   import { goto } from '$app/navigation';
 
   let isLoading = false;
   let formErrors = {};
+  let user = {};
+
+    // ユーザー情報をロードする関数
+    async function updateUserInfo() {
+    // ユーザーがログインしているか確認
+    const loggedIn = await isLoggedInStore;
+
+    if (loggedIn) {
+      // ログインしている場合はユーザー情報を取得
+      const userData = await showuser();
+      console.log('User Data:', userData);
+
+      // ユーザー情報を更新
+      user = userData;
+    }
+  }
+
 
   async function uploadImage(evt) {
+    await updateUserInfo();
     evt.preventDefault();
 
     const fileInput = evt.target['fileInput'];
@@ -24,14 +42,14 @@
 
       const postData = {
         UserID: getUserId(),
-        price: evt.target['price'].value,
+        price: parseInt(evt.target['price'].value, 10), 
         filename: fileName,
         title: evt.target['title'].value,
         description: evt.target['description'].value,
         url: fileUrl,
-        name: evt.target['name'].value,  // 追加
-        email: evt.target['email'].value,  // 追加
-        password: evt.target['password'].value,  // 追加
+        name: user.name,
+			  email: user.email,
+			  password: user.password
       };
 
       console.log(postData)
@@ -81,7 +99,7 @@
               </label>
             {/if}
             <p>price</p>
-            <input type="price" name="price" />
+            <input type="number" name="price" />
             <p>title</p>
             <input type="title" name="title" />
             <p>discription</p>

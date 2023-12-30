@@ -61,7 +61,7 @@ background-color:#000;
                 margin-top: auto;
                 margin-bottom: auto;
                 color:#fff" 
-        href="/image/upload">Post Jobs</a>
+        href="/image/upload">Upload Image</a>
 
         <a class="hover-line font-thin " 
         style = "margin-right:10px;

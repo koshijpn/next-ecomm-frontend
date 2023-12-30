@@ -13,7 +13,7 @@
 <main>
     <div class="p40">
 
-        <figure style="height: 350px" class="relative">
+        <figure class="relative">
             <img src={data.image.url} alt="" />
           </figure>
           <div class="flex-1">
