@@ -100,7 +100,7 @@ background-color:#000;
       margin-top: auto;
       margin-bottom: auto;
       color:#fff" 
-      href="user/login">login</a>
+      href="/user/login">login</a>
       {/if}
 
   </nav>

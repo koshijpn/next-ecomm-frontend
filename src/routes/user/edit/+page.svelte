@@ -182,7 +182,7 @@ async function updateUserInfo() {
 				  <div class="loader ease-linear rounded-full border-2 border-t-2 border-gray-200 h-12 w-12"></div>
 			  </div>
 		  {:else}
-			  <button class="btn text-3xl" on:click={deleteUser}>DELETE User</button>
+			  <button class="btn text 3xl" on:click={deleteUser}>DELETE User</button>
 		  {/if}
 	  </div>
 	</div>
