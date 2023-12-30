@@ -1,6 +1,7 @@
 <script>
     import { PUBLIC_BACKEND_BASE_URL } from '$env/static/public';
     import { goto } from '$app/navigation';
+    import { authenticateUser } from '../../../utils/auth';
     let formErrors = {};
   
     function postSignUp() {
@@ -26,7 +27,8 @@
       });
   
       if (resp.status == 200) {
-          postSignUp(); 
+        await authenticateUser(userData.email, userData.password);
+        postSignUp()
       } else {
         const res = await resp.json();
         formErrors = res.error;
