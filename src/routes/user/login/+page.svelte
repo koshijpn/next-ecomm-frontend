@@ -1,7 +1,7 @@
 <script>
   
     import { goto } from '$app/navigation';
-    import { authenticateUser } from '../../../utils/auth';
+    import { authenticateUser,isLoggedInStore } from '../../../utils/auth';
     let formErrors = {};
   
     async function signIn(evt){
@@ -15,7 +15,8 @@
       const res = await authenticateUser(result.email,result.password)
   
       if(res.success){
-          goto("/"); 
+        isLoggedInStore.set(true)
+        goto("/"); 
       }
     }
   

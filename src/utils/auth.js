@@ -3,14 +3,20 @@ import { writable } from 'svelte/store';
 import { goto } from '$app/navigation';
 
 export const isLoggedInStore = writable(false);
+export const user = writable({});
+
 
 export function checkLoginStatus() {
-  if (isLoggedInStore === false) {
+  const loggedIn = isLoggedInStore;
+  if (loggedIn) {
+    isLoggedInStore.set(true)
+    // ログインしている場合はユーザー情報を更新
+    updateUserInfo();
+  } else {
     console.log("logout");
-  } else if (isLoggedInStore === true) {
-    console.log("login");
   }
 }
+
 
 const emptyAuth = {
   "token": "",
@@ -184,3 +190,24 @@ export async function showuser() {
   return user;
 }
 
+export async function updateUserInfo() {
+  // ユーザーがログインしているか確認
+  const loggedIn = await isLoggedInStore;
+
+  if (loggedIn) {
+    // ログインしている場合はユーザー情報を取得
+    const userData = await showuser();
+    // デバッグログ
+    console.log('Setting user data:', userData);
+    // ユーザー情報を更新
+    isLoggedInStore.set(true)
+    // ユーザー情報を更新
+    user.set(userData); // Use set method to update the store value
+    return user;
+    
+  } else {
+    isLoggedInStore.set(false)
+    // ログアウトしている場合はユーザー情報をクリア
+    user.set({});
+  }
+}
