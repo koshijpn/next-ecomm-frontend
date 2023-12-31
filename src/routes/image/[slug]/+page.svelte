@@ -2,8 +2,10 @@
 	import { getUserId,isLoggedInStore } from "../../../utils/auth";
     
     const userId = getUserId();
+    console.log(userId)
     
     export let data;
+    console.log(data.image.UserID)
 </script>
 
 <svelte:head>
@@ -13,10 +15,13 @@
 <main>
     <div class="p40">
 
-        <figure class="relative">
+        <figure style="
+        display:flex;
+        justify-content:center;
+        ">
             <img src={data.image.url} alt="" />
           </figure>
-          <div class="flex-1">
+          <div class="flex-1 mt-10">
               <h1 class="text-3xl font-extrabold ml-5">{data.image.title}</h1>
           </div>
 
@@ -37,12 +42,12 @@
                 </div>
             </div>
         </div>
-        <!-- {#if userId === data.image.user}
-            {#if $isLoggedInStore} -->
-            <a class="link-hover text-xs uppercase btn ml-20 mt-10 "
-            href="./edit/{data.image.id}">Edit Image</a>
-            <!-- {/if}
-                {/if} -->
+        {#if userId === data.image.UserID}
+            <a class="link-hover text-xs uppercase btn  mt-10 "
+            href="./edit/{data.image.id}" style="
+            display:flex;
+            justify-content:center;">Edit Image</a>
+                {/if}
             </div>   
         </main>
             
