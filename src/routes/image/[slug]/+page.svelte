@@ -42,6 +42,10 @@
                 </div>
             </div>
         </div>
+          <!-- Use action="/create-checkout-session.php" if your server is PHP based. -->
+          <form action="/create-checkout-session" method="POST">
+            <button type="submit">Checkout</button>
+          </form>
         {#if userId === data.image.UserID}
             <a class="link-hover text-xs uppercase btn  mt-10 "
             href="./edit/{data.image.id}" style="

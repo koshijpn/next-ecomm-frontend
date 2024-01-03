@@ -21,13 +21,15 @@
 		"prettier": "^2.8.0",
 		"prettier-plugin-svelte": "^2.8.1",
 		"svelte": "^3.54.0",
+		"svelte-markdown": "^0.2.3",
 		"svelte-paginate": "^0.1.0",
-		"svelte-markdown": "^0.2.3" ,
 		"tailwindcss": "^3.3.2",
 		"vite": "^4.3.0"
 	},
 	"type": "module",
 	"dependencies": {
-		"aws-sdk": "^2.1408.0"
+		"aws-sdk": "^2.1408.0",
+		"express": "^4.18.2",
+		"stripe": "^14.10.0"
 	}
 }
