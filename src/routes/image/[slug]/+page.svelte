@@ -1,11 +1,15 @@
 <script>
 	import { getUserId,isLoggedInStore } from "../../../utils/auth";
+    import { PUBLIC_PAYMENT_URL } from '$env/static/public';
     
     const userId = getUserId();
     console.log(userId)
     
     export let data;
     console.log(data.image.UserID)
+
+    const paymentUrl = PUBLIC_PAYMENT_URL + "/create-checkout-session";
+
 </script>
 
 <svelte:head>
@@ -42,10 +46,11 @@
                 </div>
             </div>
         </div>
-          <!-- Use action="/create-checkout-session.php" if your server is PHP based. -->
-          <form action="/create-checkout-session" method="POST">
-            <button type="submit">Checkout</button>
-          </form>
+            <form action="{paymentUrl}" method="POST">
+                <button type="submit" class="link-hover text-xs uppercase btn mt-10" style="
+                display:flex;
+                justify-content:center;">Checkout</button>
+              </form>
         {#if userId === data.image.UserID}
             <a class="link-hover text-xs uppercase btn  mt-10 "
             href="./edit/{data.image.id}" style="
