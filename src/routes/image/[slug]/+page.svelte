@@ -1,6 +1,5 @@
 <script>
 	import { getUserId,isLoggedInStore } from "../../../utils/auth";
-    import { PUBLIC_PAYMENT_URL } from '$env/static/public';
     
     const userId = getUserId();
     console.log(userId)
@@ -11,7 +10,7 @@
     export const imageId  = data.image.id; // Assuming the imageId is sent in the request body
     console.log(imageId)
 
-    const paymentUrl = PUBLIC_PAYMENT_URL + "/create-checkout-session";
+    const paymentUrl = "http://localhost:8080" + "/create-checkout-session";
 
     async function checkout ( data){
     const imageId = data.image.id;
