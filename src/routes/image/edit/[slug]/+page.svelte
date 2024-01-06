@@ -83,76 +83,73 @@
 	<div class="p40">
 		
 		
-		<h1 class="text-center text-3xl font-bold display-flex align-middle mb-10">EDIT IMAGE</h1>
+		<h1 class="mb-10 text-center font-thin flex justify-center" style="
+        font-size: 24px;">EDIT IMAGE</h1>
 		{#if userId !== data.image.UserID}
 		<h2 class="text-center text-3l font-bold display-flex align-middle">You cannot change </h2>
 		{/if}
 		{#if userId === data.image.UserID}
-		<div>
-			<form on:submit={updateImage}>
-				<figure style="
-				display:flex;
-				justify-content:center;
-				">
+		<div class="md:flex md:justify-center">
+			<form on:submit={updateImage} class="flex flex-col items-center">
+				<figure class="flex justify-center">
 					<img src={data.image.url} alt="" />
-				  </figure>
-				<div class="form-control w-full left px-36 mt-5">
-					<label class="label" for="title">
-						<span class="label-text">Title</span>
+				</figure>
+				<div class="md:form-control md:w-full mt-5">
+					<label class="label flex justify-center" for="title">
+						<span class="label-text mb-5 ">Title</span>
 					</label>
 					<input
 						type="text"
 						name="title"
-						class="input input-bordered w-full"
+						class="mb-10 flex justify-center" style="border-width: 0 0 2px 0;"
 						value={data.image.title}
 						required
 					/>
 				</div>
-				<div class="form-control w=full px-36 mt-5">
-					<label class="label" for="price">
-						<span class="label-text">Price</span>
+				<div class="md:form-control md:w-full mt-5">
+					<label class="label flex justify-center" for="price">
+						<span class="label-text mb-5">Price</span>
 					</label>
 					<input
 						type="number"
 						name="price"
-						class="input input-bordered w-full"
+						class="mb-10" style="border-width: 0 0 2px 0;"
 						value={data.image.price}
 						required
 					/>
 				</div>
-				<div class="form-control w=full px-36 mt-5">
-					<label class="label" for="description">
-						<span class="label-text">Description</span>
+				<div class="md:form-control md:w-full mt-5">
+					<label class="label flex justify-center" for="description">
+						<span class="label-text mb-5">Description</span>
 					</label>
 					<textarea
 						type="text"
 						name="description"
-						class="textarea textarea-bordered w-full h-56"
+						class="mb-10" style="border-width: 0 0 2px 0;"
 						value={data.image.description}
 						required
 					/>
 				</div>
-
-
-				<div class="form-control w-full px-36 mt-5">
+				<div class="md:form-control md:w-full md:px-36 mt-5" style="display: flex; justify-content: center;">
 					{#if isLoading}
-					<div class="flex justify-center mt-5">
-					  <div class="loader ease-linear rounded-full border-2 border-t-2 border-gray-200 h-12 w-12"></div>
-					</div>
-				  {:else}
-					<button class="btn text 3xl">UPDATE IMAGE</button>
-				  {/if}
+						<div class="flex justify-center mt-5">
+							<div class="loader ease-linear rounded-full border-2 border-t-2 border-gray-200 h-12 w-12"></div>
+						</div>
+					{:else}
+						<button class="btn-cross">UPDATE IMAGE</button>
+					{/if}
+				</div>
+				<div class="md:form-control md:w-full md:px-36 mt-5" style="display: flex; justify-content: center;">
+					{#if isLoading}
+						<div class="flex justify-center mt-5">
+							<div class="loader ease-linear rounded-full border-2 border-t-2 border-gray-200 h-12 w-12"></div>
+						</div>
+					{:else}
+						<button class="btn-cross" on:click={deleteImage}>DELETE IMAGE</button>
+					{/if}
 				</div>
 			</form>
-		</div>
-		<div class="form-control w-full px-36 mt-5">
-			{#if isLoading}
-				<div class="flex justify-center mt-5">
-					<div class="loader ease-linear rounded-full border-2 border-t-2 border-gray-200 h-12 w-12"></div>
-				</div>
-			{:else}
-				<button class="btn text-3xl" on:click={deleteImage}>DELETE IMAGE</button>
-			{/if}
+			
 		</div>
 		{/if}
 		

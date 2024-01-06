@@ -136,53 +136,54 @@ async function updateUserInfo() {
 
 <main>
 	<div class="p40">
-
-		
-		<h1 class="text-center text-3xl font-thin display-flex align-middle">EDIT USER</h1>
+		<h1 class="text-center text-3xl font-thin display-flex align-middle mb-10">EDIT USER</h1>
 		
 		<form on:submit={updateUsername}>
-		  <div class="form-control w-full left px-36 mt-5">
-			<label class="label" for="username">
+		  <div class="md:form-control md:w-full md:left md:px-36 mt-5">
+			<label class="label " for="username">
 			  <span class="label-text">Username</span>
 			</label>
 			<input
 			  type="text"
 			  name="username"
-			  class="input input-bordered w-full"
+        class="mb-10" 
+        style="border-width: 0 0 2px 0;"
 			  value={user.name}
 			  required
 			/>
 		  </div>
-		  <div class="form-control w-full left px-36 mt-5">
-			<label class="label" for="job title">
+		  <div class="md:form-control md:w-full md:left md:px-36 mt-5">
+			<label class="label mb-5" for="job title">
 			  <span class="label-text">Email</span>
 			</label>
 			<input
 			  type="text"
 			  name="email"
-			  class="input input-bordered w-full"
+			  class="mb-10" 
+        style="border-width: 0 0 2px 0;"
 			  value={user.email}
 			  required
 			/>
 		  </div>
-		  <div class="form-control w-full px-36 mt-5">
+		  <div class="md:form-control md:w-full md:left md:px-36 mt-5" style="    display: flex;
+      justify-content: center;">
 			{#if isLoading}
 			  <div class="flex justify-center mt-5">
 				<div class="loader ease-linear rounded-full border-2 border-t-2 border-gray-200 h-12 w-12"></div>
 			  </div>
 			{:else}
-			  <button class="btn text 3xl">UPDATE</button>
+			  <button class="btn-cross">UPDATE</button>
 			{/if}
 		  </div>
 		</form>
 		
-		<div class="form-control w-full px-36 mt-5">
+		<div class="md:form-control md:w-full md:left md:px-36 mt-5" style="    display: flex;justify-content: center;">
 		  {#if isLoading}
 			  <div class="flex justify-center mt-5">
 				  <div class="loader ease-linear rounded-full border-2 border-t-2 border-gray-200 h-12 w-12"></div>
 			  </div>
 		  {:else}
-			  <button class="btn text 3xl" on:click={deleteUser}>DELETE User</button>
+			  <button class="btn-cross" on:click={deleteUser}>DELETE User</button>
 		  {/if}
 	  </div>
 	</div>

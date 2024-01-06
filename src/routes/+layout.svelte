@@ -26,8 +26,9 @@
 <header style="
   background-color:#000;
 ">
-  <nav class="flex">
-    <a style="margin-left:10px;" href="/"><img src={logo} alt="download icon" style="max-height:100px;" /></a>
+  <nav id="navi">
+    <a style="margin-left:10px;" href="/">
+      <img src={logo} alt="download icon" style="max-height:100px;" /></a>
 
     {#if $user && $user.id === undefined}
 
@@ -58,7 +59,7 @@
   </nav>
 
     {#if $isLoggedInStore && $user && $user.id !== undefined}
-      <p style="margin-left:10px; margin-right:10px; top: 0; bottom: 0; margin-top: auto; margin-bottom: auto; margin-left: 30px; padding-top:10px; padding-bottom:10px; color:#fff" class="font-thin">HELLO! {$user.name}</p>
+      <p id="hello" class="font-thin">HELLO! {$user.name}</p>
     {/if}
   </header>
 

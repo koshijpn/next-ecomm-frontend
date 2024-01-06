@@ -1,4 +1,3 @@
-
 <script>
   import { PUBLIC_BACKEND_BASE_URL } from '$env/static/public';
   import { uploadMedia } from '../../../utils/s3-uploader.js';
@@ -87,23 +86,23 @@
 {#if $isLoggedInStore}
   <main>
     <div class="p40">
-      <h1 class="text-center text-3xl font-thin display-flex align-middle">UPLOAD IMAGE</h1>
+      <h1 class="text-center text-3xl font-thin align-middle mb-10">UPLOAD IMAGE</h1>
       <div>
-        <form on:submit={uploadImage} class="w-1/3">
+        <form on:submit={uploadImage} >
           <!-- Input fields for the form -->
           <div class="form-control w-full mt-2">
-            <input type="file" name="fileInput" />
+            <input type="file" name="fileInput" class="mb-10" style="border-width: 0 0 2px 0;"/>
             {#if 'fileInput' in formErrors }
               <label class="label" for="fileInput">
-                <span class="label-text-alt text-red-500">{formErrors['fileInput']} </span>
+                <span class="label-text-alt text-red-500" >{formErrors['fileInput']} </span>
               </label>
             {/if}
-            <p>price</p>
-            <input type="number" name="price" />
-            <p>title</p>
-            <input type="title" name="title" />
-            <p>discription</p>
-            <input type="description" name="description" />
+            <p class="">Price</p>
+            <input type="number" name="price" class="mb-10" style="border-width: 0 0 2px 0;"/>
+            <p>Titles</p>
+            <input type="title" name="title" class="mb-10" style="border-width: 0 0 2px 0;"/>
+            <p>Discription</p>
+            <input type="description" name="description" class="mb-10" style="border-width: 0 0 2px 0;"/>
           </div>
           <div class="form-control w-full mt-4">
             {#if isLoading}
@@ -111,7 +110,7 @@
                 <div class="loader ease-linear rounded-full border-2 border-t-2 border-gray-200 h-12 w-12"></div>
               </div>
             {:else}
-              <button class="btn btn-md">Upload</button>
+              <button class="btn-cross">Upload</button>
             {/if}
           </div>
         </form>

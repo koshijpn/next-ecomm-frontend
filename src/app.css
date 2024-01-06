@@ -1,6 +1,42 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* app.css */
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+img{
+  background: transparent;
+  pointer-events: none; /* オーバーレイの上でのクリックを透過 */
+}
+
+#navi{
+  display: flex;
+}
+
 
 
  /* リンクのスタイル */
@@ -39,3 +75,77 @@
   main ,.p40{
     padding:40px;
   }
+
+  .btn-cross {
+    display: inline-block;
+    position: relative;
+    padding: 0.25em 1em;
+    border-top: solid 1px black;
+    border-bottom: solid 1px black;
+    text-decoration: none;
+  }
+  .btn-cross:before, .btn-cross:after {
+    content: '';
+    position: absolute;
+    top: -7px;
+    width: 1px;
+    height: -webkit-calc(100% + 14px);
+    height: calc(100% + 14px);
+    background-color: black;
+    transition: .3s;
+  }
+  .btn-cross:before {
+    left: 7px;
+  }
+  .btn-cross:after {
+    right: 7px;
+  }
+  .btn-cross:hover:before {
+    top: 0px;
+    left:0;
+    height: 100%;
+  }
+  .btn-cross:hover:after {
+    top: 0px;
+    right: 0;
+    height: 100%;
+  }
+
+  #hello{
+    margin-left:10px; 
+    margin-right:10px; 
+    top: 0; 
+    bottom: 0; 
+    margin-top: auto; 
+    margin-bottom: auto; 
+    margin-left: 30px; 
+    padding-top:10px; 
+    padding-bottom:10px; 
+    color:#fff;
+  }
+
+
+/* レスポンシブデザイン時のスタイル */
+@media screen and (max-width: 678px) {
+  .main,
+  .p40 {
+    padding: 0;
+  }
+
+  #navi{
+    flex-direction: column;
+    align-items: center;
+    margin-left:0px; 
+    margin-right:0px;
+    font-size: 15px;
+  }
+  header nav .hover-line{
+    display: block;
+    font-size: 15px;
+  }
+  #hello{
+    display: flex;
+    justify-content: center;
+    margin: 0px;
+  }
+}
