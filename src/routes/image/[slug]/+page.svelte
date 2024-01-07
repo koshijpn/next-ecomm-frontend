@@ -10,7 +10,7 @@
     export const imageId  = data.image.id; // Assuming the imageId is sent in the request body
     console.log(imageId)
 
-    const paymentUrl = "http://localhost:8080" + "/create-checkout-session";
+    const paymentUrl = "https://next-ecomm-backend-koshijpn.fly.dev" + "/create-checkout-session";
 
     async function checkout ( data){
     const imageId = data.image.id;
