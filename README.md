@@ -1,10 +1,14 @@
-# create-svelte
+# NEXT ECOMM Frontend
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+This project was bootstrapped with [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
-## Creating a project
+## Demo
 
-If you're seeing this, you've probably already done this step. Congrats!
+Explore the [NEXT ECOMM](https://next-ecomm-koshijpn.pages.dev/) to see the project in action!
+
+## Getting Started
+
+To create a new NEXT ECOMM Frontend project, you can use the following commands:
 
 ```bash
 # create a new project in the current directory
@@ -14,9 +18,9 @@ npm create svelte@latest
 npm create svelte@latest my-app
 ```
 
-## Developing
+### Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+After creating a project and installing dependencies with `npm install` (or `pnpm install` or `yarn`), you can start a development server:
 
 ```bash
 npm run dev
@@ -25,7 +29,7 @@ npm run dev
 npm run dev -- --open
 ```
 
-## Building
+### Building
 
 To create a production version of your app:
 
@@ -36,4 +40,14 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
-# next-ecomm-frontend
+
+## Combining with NEXT ECOMM Backend
+
+NEXT ECOMM is a project that integrates both the frontend and backend, creating a comprehensive photo selling site. The key technologies used in this project include:
+
+- **Frontend Technologies:** HTML, CSS, JS, Svelte, Node.js
+- **Backend Technologies:** Node.js, Prisma, Docker
+- **Payment Platform:** Stripe (API calls for integration)
+- **Image Storage:** AWS S3 (API operations for reading and writing)
+
+This project covers a full-stack engineer's skill set, providing a well-rounded understanding of both frontend and backend development.
